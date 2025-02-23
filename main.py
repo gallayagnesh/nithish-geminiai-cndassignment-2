@@ -6,11 +6,12 @@ from google.cloud import storage
 import google.generativeai as genai
 
 app = Flask(__name__)
-app.secret_key = 'saipranayassignment2'
 
-bucket_name = 'cnd2geminiai-images-buckets'
+bucket_name = 'gcp-cndassignment-2-geminiai'
+
 storage_client = storage.Client()
-genai.configure(api_key='AIzaSyABY4oVvH7JrxpA70rv0vhlWLJ5WjAVjoI')
+
+genai.configure(api_key='AIzaSyDMgjfwkNcw2J3PGfE_Oh_91oaq7tF0ORs')
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -28,8 +29,6 @@ def generative_ai(image_file):
 
     response = chat_session.send_message("INSERT_INPUT_HERE")
     logging.debug(f"Gemini API Response: {response.text}")
-
-    # Remove triple backticks and 'json' prefix
     response_text = response.text.replace("```json", "").replace("```", "").strip()
     return response_text
 
@@ -54,8 +53,7 @@ def upload():
         file = request.files['image']
         if file.filename == '':
             return "No file selected", 400
-
-        # Save the file to a temporary location
+            
         temp_path = os.path.join('/tmp', file.filename)
         file.save(temp_path)
 
@@ -89,7 +87,6 @@ def upload():
         return "Internal Server Error", 500
 
     finally:
-        # Clean up the temporary files
         if temp_path and os.path.exists(temp_path):
             os.remove(temp_path)
         if json_path and os.path.exists(json_path):
