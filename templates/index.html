@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload</title>
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #eef1f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            width: 320px;
+        }
+        .container h1 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .upload-form input[type="file"] {
+            display: none;
+        }
+        .upload-label {
+            display: block;
+            background-color: #007bff;
+            color: white;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+        .upload-label:hover {
+            background-color: #0056b3;
+        }
+        .upload-form button {
+            margin-top: 15px;
+            padding: 12px;
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+        .upload-form button:hover {
+            background-color: #218838;
+        }
+        #file-chosen {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Your Image</h1>
+        <form class="upload-form" action="/upload" method="post" enctype="multipart/form-data">
+            <label for="file" class="upload-label">Choose File</label>
+            <input type="file" id="file" name="image" accept="image/jpeg, image/jpg" required>
+            <p id="file-chosen">No file chosen</p>
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+
+    <script>
+        const fileInput = document.getElementById("file");
+        const fileChosen = document.getElementById("file-chosen");
+        
+        fileInput.addEventListener("change", function() {
+            fileChosen.textContent = this.files[0] ? this.files[0].name : "No file chosen";
+        });
+    </script>
+</body>
+</html>
