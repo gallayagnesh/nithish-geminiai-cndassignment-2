@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 # GCP Configurations
 bucket_name = os.getenv("GCS_BUCKET_NAME")
-PROJECT_ID = "image-upload-gcp-project"
+PROJECT_ID = "image-upload-in-gcp"
 SECRET_NAME = "GCS_SERVICE_ACCOUNT_KEY"
 GEMINI_SECRET_NAME = "GEMINI_API_KEY"
 
