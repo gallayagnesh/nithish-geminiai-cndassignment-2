@@ -137,7 +137,8 @@ def index():
         return "GCS_BUCKET_NAME is not set", 500
 
     images = list_uploaded_images(bucket_name)
-    return render_template('index.html', images=images)
+    bg_color = os.getenv("BACKGROUND_COLOR", "#f0f2f5")  # Default to original color if not set
+    return render_template('index.html', images=images, bg_color=bg_color)
 
 @app.route('/upload', methods=['POST'])
 def upload():
@@ -220,7 +221,8 @@ def view_image():
     if not temp_url:
         return "Error generating image URL", 500
 
-    return render_template('view.html', image_url=temp_url, title=title, description=description)
-
+    bg_color = os.getenv("BACKGROUND_COLOR", "#45b6fe")  # Default to original blue color
+    return render_template('view.html', image_url=temp_url, title=title, description=description, bg_color=bg_color)
+    
 if __name__ == '__main__':
     app.run(port=8080, debug=True)
