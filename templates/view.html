@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #eef1f6;
+            background-color: {{ bg_color }};
             display: flex;
             justify-content: center;
             align-items: center;
@@ -18,8 +18,8 @@
         .container {
             background: white;
             padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
             max-width: 600px;
         }
@@ -29,26 +29,16 @@
             margin-bottom: 20px;
             border-radius: 8px;
         }
-        h1 {
-            font-size: 24px;
-            color: #333;
-        }
-        p {
-            font-size: 16px;
-            color: #555;
-            margin: 10px 0;
-        }
         .back-button {
             margin-top: 15px;
-            padding: 12px 20px;
+            padding: 10px 20px;
             background-color: #007bff;
             color: white;
             border: none;
-            border-radius: 6px;
+            border-radius: 5px;
             cursor: pointer;
             text-decoration: none;
-            font-size: 16px;
-            transition: background 0.3s ease;
+            display: inline-block;
         }
         .back-button:hover {
             background-color: #0056b3;
@@ -60,7 +50,7 @@
         <h1>{{ title }}</h1>
         <img src="{{ image_url }}" alt="Uploaded Image">
         <p><strong>Description:</strong> {{ description }}</p>
-        <a href="/" class="back-button">Back to Uploaded Images</a>
+        <a href="/" class="back-button">Back to Gallery</a>
     </div>
 </body>
 </html>
